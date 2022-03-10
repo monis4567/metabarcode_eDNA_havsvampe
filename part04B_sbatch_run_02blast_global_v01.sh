@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=hologenomics         # Project Account
 #SBATCH --partition=hologenomics 
-#SBATCH --mem 48G ### or try with 8G if 4G is not enough
+#SBATCH --mem 1G ### or try with 8G if 4G is not enough
 #SBATCH -c 1
 #SBATCH -t 6:00:00
 #SBATCH -J p04_blibnumber

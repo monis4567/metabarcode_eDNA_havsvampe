@@ -6,17 +6,17 @@ WD=$(pwd)
 #REMDIR="/groups/hologenomics/phq599/data/EBIODIV_2021jun25"
 REMDIR="${WD}"
 #define input directory
-OUDIR01="01_demultiplex_filtered"
+OUDIR01="02_demultiplex_filtered"
 #define input directory where the downloaded data files are stored in unzipped format
 INDIR02="00C_raw_decompressed_fastq.gz_files"
 #define path for b_library numbers
 PATH01=$(echo ""${REMDIR}"/"${OUDIR01}"")
 
-# #prepare paths to files, and make a line with primer set and number of nucleotide overlap between paired end sequencing
 # Iteration loop over b library numbers
 # to prepare slurm submission scripts for each b library number
 #iterate over sequence of numbers
 # but pad the number with zeroes: https://stackoverflow.com/questions/8789729/how-to-zero-pad-a-sequence-of-integers-in-bash-so-that-all-have-the-same-width
+
 # change dire to the dir that holds the fastq files
 cd "$INDIR02"
 # make a list that holds the names of the fastq files
@@ -37,31 +37,29 @@ for smp in ${SMPLARRAY[@]}
 	#echo $fn
 	#make a directory name for the NGS library
 	BDR=$(echo "b"${smp}"")
-	
-	
+	# write the contents with cat
 	#also replace in the slurm submission script
-	cat part04_run_02blast_global_v01.sh | \
+	cat part04B_sbatch_run_02blast_global_v01.sh | \
 	# and use sed to replace a txt string w the b library number
 	# replace "blibrarynumber"
-	sed "s/blibnumber/b"${smp}"/g" > "${PATH01}"/"${BDR}"/part04_run_02blast_global_v01_b"${smp}".sh
+	sed "s/blibnumber/b"${smp}"/g" > "${PATH01}"/"${BDR}"/part04B_sbatch_run_02blast_global_v01_b"${smp}".sh
 	
 # end iteration over sequence of numbers	
 done
 
 # Iteration loop over b library numbers
 # to prepare slurm submission scripts for each b library number
-#iterate over sequence of numbers
-# but pad the number with zeroes: https://stackoverflow.com/questions/8789729/how-to-zero-pad-a-sequence-of-integers-in-bash-so-that-all-have-the-same-width
+
+#iterate over samples
 for smp in ${SMPLARRAY[@]}
  	do	
 	#echo $fn
 	#make a directory name for the NGS library
 	BDR=$(echo "b"${smp}"")
-
 	# change directory to the subdirectory
 	cd "${PATH01}"/"${BDR}"
 	# start the slurm sbatch code
-	sbatch part04_run_02blast_global_v01_b"${smp}".sh
+	sbatch part04B_sbatch_run_02blast_global_v01_b"${smp}".sh
 	# change directory to the working directory
 	cd "${WD}"
 # end iteration over sequence of numbers	
