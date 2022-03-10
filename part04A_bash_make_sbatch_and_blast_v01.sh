@@ -3,7 +3,6 @@
 
 #put present working directory in a variable
 WD=$(pwd)
-#REMDIR="/groups/hologenomics/phq599/data/EBIODIV_2021jun25"
 REMDIR="${WD}"
 #define input directory
 OUDIR01="02_demultiplex_filtered"
@@ -65,6 +64,9 @@ for smp in ${SMPLARRAY[@]}
 # end iteration over sequence of numbers	
 done
 
+
+#Line to use for cancelling multiple jobs
+#NJOBS=$(seq 30584643 30584235); for i in $NJOBS; do scancel $i; done
 
 #
 #

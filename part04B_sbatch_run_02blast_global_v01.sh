@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --account=hologenomics         # Project Account
 #SBATCH --partition=hologenomics 
-#SBATCH --mem 1G ### or try with 8G if 4G is not enough
-#SBATCH -c 1
+#SBATCH --mem 16G ### or try with 8G if 4G is not enough
+#SBATCH -c 2
 #SBATCH -t 6:00:00
 #SBATCH -J p04_blibnumber
 #SBATCH -o stdout_pa04_blast_blibnumber.txt
@@ -117,7 +117,7 @@ cat "${INPFNM1}" > "${OUTFLN2}"
 ###  02.02 try a global blast search on all sequences in the 'nochim' file - start
 ###________________________________________________________________________________________________________________________
 
-blastn -db nt -max_target_seqs 3000 -outfmt "6 std qlen qcovs sgi sseq ssciname staxid" -out "${OUTFLN1}" -qcov_hsp_perc 90 -perc_identity 80 -query "${INPFNM1}"
+blastn -db nt -max_target_seqs 2000 -outfmt "6 std qlen qcovs sgi sseq ssciname staxid" -out "${OUTFLN1}" -qcov_hsp_perc 90 -perc_identity 80 -query "${INPFNM1}"
 
 ###________________________________________________________________________________________________________________________
 ###  02.02 try a global blast search on all sequences in the 'nochim' file - end
