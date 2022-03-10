@@ -58,7 +58,6 @@ sumSequenceTables <- function(table1, table2, ..., orderBy = "abundance") {
 
 print(full_path_to_blibrary_p0)
 # define the main path to your library 1
-#YOUR_LIB_1 <- "/groups/hologenomics/phq599/data/AMRH_MBIBAL_1-demultiplexed"
 YOUR_LIB_1 <- full_path_to_blibrary_p0
 #define paths to your libraries
 path_AS_RDS_1 <- paste(YOUR_LIB_1,"/seqtab_AS_RDS", sep="")
@@ -71,15 +70,23 @@ stAS <- file.path(path_AS_RDS_1)
 stnsAS <- file.path(path_seqtab.nochim_AS_RDS_1)
 stSS <- file.path(path_seqtab_SS_RDS_1)
 stnsSS <- file.path(path_seqtab.nochim_SS_RDS_1)
-seqtab.nochim_AS <- readRDS(stnsAS)
+# No AS table  is available for Ole BB's sea sponge data set
+#seqtab.nochim_AS <- readRDS(stnsAS)
 seqtab.nochim_SS <- readRDS(stnsSS)
-seqtab_AS <- readRDS(stAS)
+# No AS table  is available for Ole BB's sea sponge data set
+#seqtab_AS <- readRDS(stAS)
 seqtab_SS <- readRDS(stSS)
-sumtable <- sumSequenceTables(seqtab_SS,seqtab_AS) # den her kommando kan merge to tabeller. sammen navn og/eller samme sekvens merges.
-nochim_sumtable <- sumSequenceTables(seqtab.nochim_SS,seqtab.nochim_AS)
+# No AS table  is available for Ole BB's sea sponge data set
+#sumtable <- sumSequenceTables(seqtab_SS,seqtab_AS) # den her kommando kan merge to tabeller. sammen navn og/eller samme sekvens merges.
+#sumtable <- sumSequenceTables(seqtab_SS) # den her kommando kan merge to tabeller. sammen navn og/eller samme sekvens merges.
+sumtable <- seqtab_SS
+# No AS table is available for Ole BB's sea sponge data set
+#nochim_sumtable <- sumSequenceTables(seqtab.nochim_SS,seqtab.nochim_AS)
+#nochim_sumtable <- sumSequenceTables(seqtab.nochim_SS)
+nochim_sumtable <- seqtab.nochim_SS
+
 
 # define the main path to your library 2
-#YOUR_LIB_2 <- "/groups/hologenomics/phq599/data/AMRH_MBIBBL_1-demultiplexed"
 YOUR_LIB_2 <- full_path_to_blibrary_p0
 #define paths to your libraries
 path_AS_RDS_2 <- paste(YOUR_LIB_2,"/seqtab_AS_RDS", sep="")
@@ -100,7 +107,6 @@ path_seqtab.nochim_SS_RDS_2 <- paste(YOUR_LIB_2,"/seqtab.nochim_SS_RDS", sep="")
 #nochim_sumtable2 <- sumSequenceTables(seqtab.nochim_SS2,seqtab.nochim_AS2)
 
 # define the main path to your library 3
-#YOUR_LIB_3 <- "/groups/hologenomics/phq599/data/AMRH_MBIBCL_1-demultiplexed"
 YOUR_LIB_3 <- full_path_to_blibrary_p0
 #define paths to your libraries
 path_AS_RDS_3 <- paste(YOUR_LIB_3,"/seqtab_AS_RDS", sep="")
@@ -122,7 +128,6 @@ path_seqtab.nochim_SS_RDS_3 <- paste(YOUR_LIB_3,"/seqtab.nochim_SS_RDS", sep="")
 #nochim_sumtable3 <- sumSequenceTables(seqtab.nochim_SS3,seqtab.nochim_AS3)
 
 # define the main path to your library 4
-#YOUR_LIB_4 <- "/groups/hologenomics/phq599/data/AMRH_MBIBDL_1-demultiplexed"
 YOUR_LIB_4 <- full_path_to_blibrary_p0
 #define paths to your libraries
 path_AS_RDS_4 <- paste(YOUR_LIB_4,"/seqtab_AS_RDS", sep="")
