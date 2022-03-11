@@ -66,8 +66,12 @@ done
 
 
 #Line to use for cancelling multiple jobs
-#NJOBS=$(seq 30584643 30584235); for i in $NJOBS; do scancel $i; done
+#NJOBS=$(seq 30591439 30591629); for i in $NJOBS; do scancel $i; done
 
+#30591439 30591629
+#30584709 30585116
+#Line to use for checking how jobs perform
+#sacct | grep p04_bW | grep 48G | grep CANCE
 #
 #
 #

@@ -34,7 +34,7 @@ Before you can use R on the  remote server , you will need to install the packag
 But before you can install all the packages here below, you will need the 'RCurl' to be installed by an administrator on the remote server<br/> 
 If you run these commands locally, you should have administrator rights to get them installed locally<br/> 
 
-Before you can install these package you will need the 'RCurl' pakcage being available for R<br/> On the HPC UCPH server 'RCurl' is installed here:  "libcurl-devel" on fend05<br/> 
+Before you can install these package you will need the 'RCurl' package being available for R<br/> On the HPC UCPH server 'RCurl' is installed here:  "libcurl-devel" on fend05<br/> 
 Here is a webpage with guide to get 'RCurl' installed:<br/>  https://github.com/sagemath/cloud/issues/114<br/> 
 Users of this R-script on HPC UCPH - Note that this 'RCurl' is already installed on UCPH-HPC. So UCPH-HPC users can just go ahead and install the individual packages for R -  as described here below<br/> 
 
@@ -142,7 +142,7 @@ You are almost ready to run parts of the code together with their matching slurm
 ___________________________________________________________________________<br/>
 Getting 'sickle-master'<br/>
 ___________________________________________________________________________<br/>
-get sickle master (OR - PREFERABLY : COPY IT FROM MY DIRECTORY - see below)<br/>
+get sickle master <br/>
 git clone from this repository: https://github.com/najoshi/sickle<br/>
 place it in this directory : /groups/hologenomics/phq599/software/sickle_master<br/>
 `git clone https://github.com/najoshi/sickle.git`<br/>
@@ -208,8 +208,8 @@ If they all finish without errors, then proceed to part04<br/>
 ## part04
 part04 is for starting multiple parallel blast searches. Again as in part02 and part03 the idea is to iterate over the fastq files that have been demulitplexed and arranged in to tables.  <br/>
 Start out by locally removing any previous versions of tar compressed "part04.tar.gz". This can be removed with the command `rm part04.tar.gz`. Then locally compress all part04 related files with the tar command:  `tar -zcvf part04.tar.gz part04*`. Then transfer this "part04.tar.gz" to the remote HPC server, and uncompress it on the remote server. Then run the part04A code by executing it directly in the remote HPC terminal like this:  `./part04A_bash_make_sbatch_and_blast_v01.sh`. This will start part04B. Which will prepare a lot of slurmsubmission files, that each starts multiple parallel blast searches. One for each fastq demultiplexed sequence set.<br/>
-Inspect how the resulting "stderr" and "stdout" performs. Check the contents of these files. Also check if the slurm submission jobs ends up being cancelled. You can check it like this : `sacct | grep p04_bW | grep CANCE` <br/>
-The most likely reason for these jobs to end up being cancelled is that they need more RAM memory to be able to perform the blast search. One immediate solution is then to adjust the line '#SBATCH --mem 16G ' in the part04B file. Increase the '--mem 16G' to '--mem 32G' or perhaps to '--mem 48G', and then reinspect the resulting "stderr" and "stdout" and their contents.<br/>
+Inspect how the resulting "stderr" and "stdout" performs. Check the contents of these files. Also check if the slurm submission jobs ends up being cancelled. You can check it like this : `sacct | grep bW | grep CANCE` <br/>
+The most likely reason for these jobs to end up being cancelled is that they need more RAM memory to be able to perform the blast search. One immediate solution is then to adjust the line '#SBATCH --mem 16G ' in the part04B file. Increase the '--mem 16G' to '--mem 32G' or perhaps to '--mem 124G', and then reinspect the resulting "stderr" and "stdout" and their contents.<br/>
 
 
 
