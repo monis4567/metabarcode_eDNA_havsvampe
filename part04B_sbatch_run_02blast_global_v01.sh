@@ -3,7 +3,7 @@
 #SBATCH --partition=hologenomics 
 #SBATCH --mem 256G ### or try with 8G if 4G is not enough
 #SBATCH -c 8
-#SBATCH -t 3:00:00
+#SBATCH -t 4:00:00
 #SBATCH -J blibnumber
 #SBATCH -o stdout_pa04_blast_blibnumber.txt
 #SBATCH -e stderr_pa04_blast_blibnumber.txt
